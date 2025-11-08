@@ -380,7 +380,7 @@ export function HeroSection() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="space-y-8"
+            className="space-y-6"
           >
             {/* Professional Photo Section - Compact & Centered */}
             <motion.div
@@ -391,7 +391,7 @@ export function HeroSection() {
             >
               <div className="relative group">
                 {/* Animated background glow */}
-                <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300 animate-pulse" />
+                <div className="absolute -inset-5 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300 animate-pulse" />
                 
                 {/* Photo container */}
                 <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 shadow-2xl">
@@ -399,7 +399,7 @@ export function HeroSection() {
                   <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-blue-500/10 z-10" />
                   
                   {/* Professional photo */}
-                  <div className="w-64 h-72 relative overflow-hidden">
+                  <div className="w-72 h-80 relative overflow-hidden">
                     <img 
                       src="/vishnu-professional-1.jpg" 
                       alt="Vishnu U K - Business Analyst" 
