@@ -344,7 +344,7 @@ export function HeroSection() {
                 
                 {/* Content */}
                 <BarChart3 className="w-5 h-5 relative z-10 group-hover:rotate-12 transition-transform duration-300" />
-                <span className="relative z-10 text-lg">View Analytics</span>
+                <span className="relative z-10 text-lg">View Journey</span>
                 <motion.div
                   animate={{ x: [0, 3, 0] }}
                   transition={{ repeat: Infinity, duration: 2 }}
@@ -391,7 +391,7 @@ export function HeroSection() {
             >
               <div className="relative group">
                 {/* Animated background glow */}
-                <div className="absolute -inset-3 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300 animate-pulse" />
+                <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300 animate-pulse" />
                 
                 {/* Photo container */}
                 <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 shadow-2xl">
@@ -399,7 +399,7 @@ export function HeroSection() {
                   <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-blue-500/10 z-10" />
                   
                   {/* Professional photo */}
-                  <div className="w-48 h-56 relative overflow-hidden">
+                  <div className="w-64 h-72 relative overflow-hidden">
                     <img 
                       src="/vishnu-professional-1.jpg" 
                       alt="Vishnu U K - Business Analyst" 
