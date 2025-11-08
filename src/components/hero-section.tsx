@@ -1,13 +1,69 @@
 "use client"
 
-import { motion } from 'framer-motion'
-import { ChevronDown, Download, ExternalLink } from 'lucide-react'
-import { useState, useEffect } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { ChevronDown, Download, ExternalLink, BarChart3, TrendingUp, Activity, Zap } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
+import CountUp from 'react-countup'
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false)
+  const [counts, setCounts] = useState({ experience: 0, efficiency: 0, projects: 0, savings: 0 })
+  const statsRef = useRef(null)
+  const isStatsInView = useInView(statsRef, { once: true })
 
   useEffect(() => setMounted(true), [])
+
+  // Animated counter for stats
+  useEffect(() => {
+    if (isStatsInView) {
+      const timers = [
+        // Experience counter (4+)
+        setTimeout(() => {
+          let start = 0
+          const end = 4
+          const timer = setInterval(() => {
+            start += 0.1
+            setCounts(prev => ({ ...prev, experience: Math.min(start, end) }))
+            if (start >= end) clearInterval(timer)
+          }, 50)
+        }, 300),
+        
+        // Efficiency counter (40%)
+        setTimeout(() => {
+          let start = 0
+          const end = 40
+          const timer = setInterval(() => {
+            start += 1
+            setCounts(prev => ({ ...prev, efficiency: Math.min(start, end) }))
+            if (start >= end) clearInterval(timer)
+          }, 30)
+        }, 600),
+        
+        // Projects counter (15+)
+        setTimeout(() => {
+          let start = 0
+          const end = 15
+          const timer = setInterval(() => {
+            start += 1
+            setCounts(prev => ({ ...prev, projects: Math.min(start, end) }))
+            if (start >= end) clearInterval(timer)
+          }, 80)
+        }, 900),
+        
+        // Savings counter (2M+)
+        setTimeout(() => {
+          let start = 0
+          const end = 2
+          const timer = setInterval(() => {
+            start += 0.1
+            setCounts(prev => ({ ...prev, savings: Math.min(start, end) }))
+            if (start >= end) clearInterval(timer)
+          }, 100)
+        }, 1200),
+      ]
+      return () => timers.forEach(timer => clearTimeout(timer))
+    }
+  }, [isStatsInView])
 
   const scrollToNext = () => {
     const nextSection = document.querySelector('#experience')
@@ -19,115 +75,255 @@ export function HeroSection() {
   if (!mounted) return null
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950 py-12">
-      {/* Premium Background */}
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-950 via-slate-950 to-gray-900">
+      {/* Premium Analytics Background */}
       <div className="absolute inset-0 z-0">
-        {/* Enhanced Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900/95 to-slate-950" />
-        <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/12 via-transparent to-indigo-600/12" />
-        <div className="absolute inset-0 bg-gradient-to-bl from-purple-600/8 via-transparent to-cyan-600/8" />
+        {/* Primary Gradient Foundation */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-slate-950/95 to-gray-900" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/8 via-transparent to-blue-500/12" />
+        <div className="absolute inset-0 bg-gradient-to-bl from-blue-600/6 via-transparent to-cyan-400/8" />
         
-        {/* Enhanced Floating Elements */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-500/12 to-cyan-500/8 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-indigo-500/12 to-purple-500/8 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-purple-500/6 to-blue-500/4 rounded-full blur-3xl" />
+        {/* Animated Data Flow Lines */}
+        <div className="absolute top-0 left-0 w-full h-full">
+          {/* Horizontal flowing lines */}
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={`h-${i}`}
+              className="absolute h-px bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent"
+              style={{ 
+                top: `${15 + i * 12}%`, 
+                left: '-100%',
+                width: '200%'
+              }}
+              animate={{ 
+                x: ['0%', '100%', '0%'] 
+              }}
+              transition={{ 
+                duration: 8 + i * 2, 
+                repeat: Infinity, 
+                ease: "linear",
+                delay: i * 0.5
+              }}
+            />
+          ))}
+          
+          {/* Vertical flowing lines */}
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={`v-${i}`}
+              className="absolute w-px bg-gradient-to-b from-transparent via-blue-400/15 to-transparent"
+              style={{ 
+                left: `${20 + i * 15}%`, 
+                top: '-100%',
+                height: '200%'
+              }}
+              animate={{ 
+                y: ['0%', '100%', '0%'] 
+              }}
+              transition={{ 
+                duration: 10 + i * 1.5, 
+                repeat: Infinity, 
+                ease: "linear",
+                delay: i * 0.8
+              }}
+            />
+          ))}
+        </div>
         
-        {/* Additional ambient lighting */}
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-900/5 via-transparent to-purple-900/5" />
+        {/* Floating Analytics Particles */}
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={`particle-${i}`}
+              className="absolute w-1 h-1 bg-cyan-400/60 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -30, 0],
+                opacity: [0.3, 1, 0.3],
+                scale: [0.5, 1, 0.5],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 4,
+                repeat: Infinity,
+                delay: Math.random() * 5,
+                ease: "easeInOut"
+              }}
+            />
+          ))}
+        </div>
+        
+        {/* Premium Glow Orbs */}
+        <div className="absolute top-1/4 left-1/6 w-80 h-80 bg-gradient-to-br from-cyan-500/15 to-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
+        <div className="absolute bottom-1/3 right-1/6 w-96 h-96 bg-gradient-to-br from-blue-500/12 to-indigo-500/8 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-br from-cyan-500/8 to-blue-500/6 rounded-full blur-3xl" />
+        
+        {/* Analytics Grid Pattern */}
+        <div 
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(34, 211, 238, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(34, 211, 238, 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '40px 40px'
+          }}
+        />
       </div>
 
-      {/* Expanded Content Layout */}
-      <div className="relative z-10 w-full max-w-[95rem] mx-auto px-6 md:px-8 lg:px-12">
+      {/* Premium Analytics Content Layout */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="grid lg:grid-cols-5 gap-12 lg:gap-20 items-start"
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-start min-h-screen py-20"
         >
-          {/* Left Column - Main Info (3 columns) */}
-          <div className="lg:col-span-3 space-y-12 lg:space-y-16">
-            {/* Header with Single Profile Image */}
-            <div className="flex items-center gap-10">
-              {/* Main Profile Image */}
+          {/* Left Column - Main Analytics Identity (7 columns) */}
+          <div className="lg:col-span-7 space-y-12">
+            {/* Analytics Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex items-center gap-3 mb-6"
+            >
+              <div className="flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-400/20 rounded-full backdrop-blur-sm">
+                <Activity className="w-4 h-4 text-cyan-400" />
+                <span className="text-sm font-medium text-cyan-300 tracking-wide">ANALYTICS PROFESSIONAL</span>
+              </div>
+              <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
+            </motion.div>
+            {/* Premium Analytics Identity Header */}
+            <div className="space-y-8">
+              {/* Name with Premium Typography */}
               <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative"
-                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1, delay: 0.4 }}
               >
-                {/* Primary Profile Image */}
-                <div className="relative w-32 h-32 md:w-40 md:h-40 lg:w-44 lg:h-44">
-                  <div className="relative w-full h-full rounded-full overflow-hidden ring-4 ring-slate-400/30 shadow-2xl hover:ring-blue-400/50 transition-all duration-500">
-                    <img 
-                      src="/vishnu-professional-1.jpg" 
-                      alt="Vishnu U K"
-                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        const fallback = target.parentElement?.querySelector('.fallback') as HTMLElement;
-                        if (fallback) fallback.style.display = 'flex';
-                      }}
-                    />
-                    <div className="fallback w-full h-full hidden items-center justify-center absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900">
-                      <span className="text-4xl font-light text-white/90">VUK</span>
-                    </div>
-                  </div>
-                  {/* Enhanced glow effects */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-400/30 to-indigo-400/30 blur-xl scale-125 -z-10" />
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/20 to-purple-400/20 blur-2xl scale-150 -z-20 animate-pulse" style={{ animationDuration: '3s' }} />
-                </div>
+                <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-none tracking-tight">
+                  <span className="block text-white/95 font-extralight">Vishnu</span>
+                  <span className="block bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent font-bold tracking-wider">U K</span>
+                </h1>
               </motion.div>
 
-              {/* Name & Title */}
-              <div>
-                <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-light text-white leading-none tracking-tight">
-                  Vishnu <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-500 bg-clip-text text-transparent font-medium">U K</span>
-                </h1>
-                <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl text-slate-100 font-normal mt-6 leading-relaxed">Associate Product Analyst</p>
-                <p className="text-base md:text-lg lg:text-xl text-blue-300 font-medium mt-3 tracking-wide">ZeOmega • Bengaluru, India</p>
-              </div>
+              {/* Professional Title with Analytics Flair */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1, delay: 0.6 }}
+                className="space-y-3"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="h-1 w-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" />
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl text-white font-semibold tracking-wide">
+                    Business Analyst
+                  </h2>
+                </div>
+                <p className="text-lg md:text-xl text-cyan-300 font-medium tracking-wide ml-16">
+                  ZeOmega • Bengaluru, India
+                </p>
+              </motion.div>
+
+              {/* Premium Analytics Tagline */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.8 }}
+                className="ml-16"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <TrendingUp className="w-5 h-5 text-cyan-400" />
+                  <span className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white to-cyan-200 bg-clip-text text-transparent">
+                    Turning Data into Decisions
+                  </span>
+                </div>
+                <p className="text-lg text-slate-300 font-light max-w-2xl leading-relaxed">
+                  Transforming complex datasets into strategic insights that drive 
+                  <span className="text-cyan-400 font-semibold"> 40% efficiency gains</span> and 
+                  <span className="text-blue-400 font-semibold"> ₹2M+ cost savings</span>
+                </p>
+              </motion.div>
             </div>
 
-            {/* Expanded About Description */}
+            {/* Premium Analytics Description */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="space-y-8 max-w-4xl"
+              transition={{ duration: 1, delay: 1.0 }}
+              className="space-y-8 ml-16"
             >
-              <p className="text-lg md:text-xl lg:text-2xl text-slate-100 leading-relaxed font-normal tracking-wide">
-                Dedicated Business Analyst with <span className="text-blue-400 font-semibold bg-blue-400/10 px-2 py-1 rounded-lg">4+ years of experience</span> transforming complex data into actionable insights. 
-                Currently driving digital transformation initiatives at ZeOmega, specializing in healthcare analytics and business intelligence solutions.
-              </p>
-              <p className="text-base md:text-lg lg:text-xl text-slate-200 leading-relaxed font-normal tracking-wide">
-                Expert in <span className="text-blue-400 font-semibold bg-blue-400/10 px-2 py-0.5 rounded-md">Power BI dashboards</span>, 
-                <span className="text-indigo-400 font-semibold bg-indigo-400/10 px-2 py-0.5 rounded-md ml-1"> advanced SQL analytics</span>, 
-                <span className="text-cyan-400 font-semibold bg-cyan-400/10 px-2 py-0.5 rounded-md ml-1"> process optimization</span>, and 
-                <span className="text-purple-400 font-semibold bg-purple-400/10 px-2 py-0.5 rounded-md ml-1"> requirements engineering</span>. 
-                Proven track record of delivering <span className="text-emerald-400 font-bold bg-emerald-400/10 px-2 py-0.5 rounded-md">40% efficiency improvements</span> and 
-                <span className="text-amber-400 font-bold bg-amber-400/10 px-2 py-0.5 rounded-md">₹2M+ cost savings</span> through data-driven solutions.
-              </p>
-              <div className="flex flex-wrap gap-3 pt-4">
-                {['Power BI', 'SQL Server', 'Azure', 'Python', 'DAX', 'SSRS', 'Tableau', 'Excel VBA'].map((skill) => (
-                  <motion.span 
-                    key={skill} 
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    className="px-4 py-2 text-sm font-semibold text-slate-100 bg-gradient-to-r from-slate-700/50 to-slate-600/50 backdrop-blur-sm rounded-full border border-slate-500/30 hover:border-blue-400/50 transition-all duration-300 cursor-pointer"
-                  >
-                    {skill}
-                  </motion.span>
-                ))}
+              {/* Core Value Proposition */}
+              <div className="space-y-6">
+                <p className="text-xl md:text-2xl text-slate-200 leading-relaxed font-light max-w-4xl">
+                  <span className="text-cyan-400 font-semibold">4+ years</span> of transforming complex healthcare data into strategic insights at 
+                  <span className="text-blue-400 font-semibold"> ZeOmega</span>, specializing in advanced analytics and business intelligence solutions 
+                  that drive measurable business outcomes.
+                </p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl">
+                  <div className="flex items-center gap-3 p-4 bg-cyan-500/5 border border-cyan-400/20 rounded-xl backdrop-blur-sm">
+                    <BarChart3 className="w-5 h-5 text-cyan-400" />
+                    <span className="text-slate-300">Advanced Power BI Analytics</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-4 bg-blue-500/5 border border-blue-400/20 rounded-xl backdrop-blur-sm">
+                    <TrendingUp className="w-5 h-5 text-blue-400" />
+                    <span className="text-slate-300">Process Optimization</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-4 bg-indigo-500/5 border border-indigo-400/20 rounded-xl backdrop-blur-sm">
+                    <Activity className="w-5 h-5 text-indigo-400" />
+                    <span className="text-slate-300">Healthcare Intelligence</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-4 bg-purple-500/5 border border-purple-400/20 rounded-xl backdrop-blur-sm">
+                    <Zap className="w-5 h-5 text-purple-400" />
+                    <span className="text-slate-300">Digital Transformation</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Tech Stack with Analytics Flair */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-white/90 flex items-center gap-2">
+                  <div className="w-1 h-5 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full" />
+                  Analytics Technology Stack
+                </h3>
+                <div className="flex flex-wrap gap-2 max-w-4xl">
+                  {[
+                    { name: 'Power BI', level: 'Expert', color: 'cyan' },
+                    { name: 'SQL Server', level: 'Advanced', color: 'blue' },
+                    { name: 'Azure', level: 'Proficient', color: 'indigo' },
+                    { name: 'Python', level: 'Intermediate', color: 'purple' },
+                    { name: 'DAX', level: 'Expert', color: 'cyan' },
+                    { name: 'SSRS', level: 'Advanced', color: 'blue' },
+                    { name: 'Tableau', level: 'Proficient', color: 'indigo' },
+                    { name: 'Excel VBA', level: 'Advanced', color: 'purple' }
+                  ].map((skill) => (
+                    <motion.div 
+                      key={skill.name} 
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      className={`group px-4 py-2 bg-gradient-to-r from-${skill.color}-500/10 to-${skill.color}-600/10 border border-${skill.color}-400/30 rounded-lg backdrop-blur-sm hover:border-${skill.color}-400/50 transition-all duration-300 cursor-pointer`}
+                    >
+                      <span className={`text-sm font-medium text-${skill.color}-300 group-hover:text-${skill.color}-200 transition-colors duration-300`}>
+                        {skill.name}
+                      </span>
+                      <span className="text-xs text-slate-400 ml-2">
+                        {skill.level}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </motion.div>
 
-            {/* Enhanced Interactive CTA Buttons */}
+            {/* Premium Analytics CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-wrap gap-6 pt-4"
+              transition={{ duration: 1, delay: 1.2 }}
+              className="flex flex-wrap gap-6 ml-16 pt-8"
             >
               <motion.a
                 href="#experience"
@@ -136,22 +332,25 @@ export function HeroSection() {
                   scrollToNext()
                 }}
                 whileHover={{ 
-                  scale: 1.08, 
-                  y: -8,
-                  boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.5)",
-                  background: "linear-gradient(135deg, #2563eb 0%, #3b82f6 30%, #6366f1 70%, #8b5cf6 100%)"
+                  scale: 1.05, 
+                  y: -3,
                 }}
-                whileTap={{ scale: 0.95 }}
-                className="group px-10 py-5 rounded-2xl bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 backdrop-blur-xl text-white font-semibold border border-blue-400/30 transition-all duration-300 flex items-center gap-4 shadow-2xl relative overflow-hidden text-lg"
+                whileTap={{ scale: 0.98 }}
+                className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-semibold text-white transition-all duration-300 flex items-center gap-3 shadow-2xl overflow-hidden min-w-[200px]"
               >
-                {/* Floating particles effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                <span className="relative z-10 tracking-wide">View Experience</span>
+                {/* Animated background */}
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500" />
+                
+                {/* Content */}
+                <BarChart3 className="w-5 h-5 relative z-10 group-hover:rotate-12 transition-transform duration-300" />
+                <span className="relative z-10 text-lg">View Analytics</span>
                 <motion.div
-                  whileHover={{ x: 5, rotate: 20 }}
+                  animate={{ x: [0, 3, 0] }}
+                  transition={{ repeat: Infinity, duration: 2 }}
                   className="relative z-10"
                 >
-                  <ExternalLink size={22} />
+                  <ExternalLink size={18} />
                 </motion.div>
               </motion.a>
               
@@ -159,25 +358,19 @@ export function HeroSection() {
                 href="/vishnu-uk-resume.pdf"
                 download="Vishnu_UK_Resume.pdf"
                 whileHover={{ 
-                  scale: 1.08, 
-                  y: -8,
-                  backgroundColor: "rgba(16, 185, 129, 0.15)",
-                  borderColor: "rgba(16, 185, 129, 0.8)",
-                  boxShadow: "0 25px 50px -12px rgba(16, 185, 129, 0.3)"
+                  scale: 1.05, 
+                  y: -3,
                 }}
-                whileTap={{ scale: 0.95 }}
-                className="group px-10 py-5 rounded-2xl border-2 border-slate-400/40 backdrop-blur-xl text-slate-100 font-semibold hover:border-emerald-400/60 transition-all duration-300 flex items-center gap-4 relative overflow-hidden text-lg bg-slate-800/20"
+                whileTap={{ scale: 0.98 }}
+                className="group relative px-8 py-4 border-2 border-cyan-400/40 rounded-xl font-semibold text-cyan-300 hover:text-white backdrop-blur-sm transition-all duration-300 flex items-center gap-3 bg-cyan-500/5 hover:bg-cyan-500/10 min-w-[200px]"
               >
-                {/* Pulse effect */}
-                <div className="absolute inset-0 rounded-2xl bg-emerald-500/10 opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-300" />
-                <span className="relative z-10 group-hover:text-emerald-300 transition-colors duration-300 tracking-wide">Download Resume</span>
-                <motion.div
-                  animate={{ rotate: [0, -15, 15, 0] }}
-                  transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-                  className="relative z-10 group-hover:text-emerald-300 transition-colors duration-300"
-                >
-                  <Download size={22} />
-                </motion.div>
+                {/* Glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                {/* Content */}
+                <Download className="w-5 h-5 relative z-10 group-hover:translate-y-[-1px] transition-transform duration-300" />
+                <span className="relative z-10 text-lg">Download CV</span>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse relative z-10" />
               </motion.a>
             </motion.div>
           </div>
@@ -189,106 +382,113 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="lg:col-span-2 space-y-12"
           >
-            {/* Interactive Stats Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <motion.div 
-                whileHover={{ 
-                  scale: 1.05, 
-                  y: -8,
-                  rotateY: 5,
-                  boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.4)"
-                }}
-                whileTap={{ scale: 0.98 }}
-                className="glass-card p-8 rounded-3xl border border-slate-700/50 text-center group hover:border-blue-400/60 transition-all duration-500 relative overflow-hidden cursor-pointer bg-gradient-to-br from-slate-800/40 to-slate-900/60 backdrop-blur-xl"
-              >
-                {/* Animated background gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/15 via-blue-500/10 to-blue-400/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                {/* Floating particles */}
-                <div className="absolute top-3 right-3 w-2 h-2 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping" />
-                
-                <motion.div 
-                  className="text-5xl xl:text-6xl font-bold text-blue-400 mb-4 relative z-10"
-                  whileHover={{ scale: 1.15, rotateX: 15 }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                >
-                  4+
-                </motion.div>
-                <div className="text-lg font-semibold text-slate-100 relative z-10 group-hover:text-white transition-colors duration-300">Years Experience</div>
-                <div className="text-sm text-slate-400 mt-2 relative z-10 group-hover:text-blue-300 transition-colors duration-300 font-medium">in Business Analytics</div>
-              </motion.div>
-              
-              <motion.div 
-                whileHover={{ 
-                  scale: 1.05, 
-                  y: -8,
-                  rotateY: -5,
-                  boxShadow: "0 25px 50px -12px rgba(99, 102, 241, 0.4)"
-                }}
-                whileTap={{ scale: 0.98 }}
-                className="glass-card p-8 rounded-3xl border border-slate-700/50 text-center group hover:border-indigo-400/60 transition-all duration-500 relative overflow-hidden cursor-pointer bg-gradient-to-br from-slate-800/40 to-slate-900/60 backdrop-blur-xl"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/15 via-indigo-500/10 to-indigo-400/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute top-3 left-3 w-2 h-2 bg-indigo-400 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-bounce" />
-                
-                <motion.div 
-                  className="text-5xl xl:text-6xl font-bold text-indigo-400 mb-4 relative z-10"
-                  whileHover={{ scale: 1.15, rotateZ: 5 }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                >
-                  40%
-                </motion.div>
-                <div className="text-lg font-semibold text-slate-100 relative z-10 group-hover:text-white transition-colors duration-300">Efficiency Gain</div>
-                <div className="text-sm text-slate-400 mt-2 relative z-10 group-hover:text-indigo-300 transition-colors duration-300 font-medium">Process Optimization</div>
-              </motion.div>
-              
-              <motion.div 
-                whileHover={{ 
-                  scale: 1.05, 
-                  y: -8,
-                  rotateY: 5,
-                  boxShadow: "0 25px 50px -12px rgba(34, 211, 238, 0.4)"
-                }}
-                whileTap={{ scale: 0.98 }}
-                className="glass-card p-8 rounded-3xl border border-slate-700/50 text-center group hover:border-cyan-400/60 transition-all duration-500 relative overflow-hidden cursor-pointer bg-gradient-to-br from-slate-800/40 to-slate-900/60 backdrop-blur-xl"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/15 via-cyan-500/10 to-cyan-400/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-3 right-3 w-2 h-2 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-pulse" />
-                
-                <motion.div 
-                  className="text-5xl xl:text-6xl font-bold text-cyan-400 mb-4 relative z-10"
-                  whileHover={{ scale: 1.15, rotateX: -15 }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                >
-                  15+
-                </motion.div>
-                <div className="text-lg font-semibold text-slate-100 relative z-10 group-hover:text-white transition-colors duration-300">Projects</div>
-                <div className="text-sm text-slate-400 mt-2 relative z-10 group-hover:text-cyan-300 transition-colors duration-300 font-medium">Successfully Delivered</div>
-              </motion.div>
-              
-              <motion.div 
-                whileHover={{ 
-                  scale: 1.05, 
-                  y: -8,
-                  rotateY: -5,
-                  boxShadow: "0 25px 50px -12px rgba(168, 85, 247, 0.4)"
-                }}
-                whileTap={{ scale: 0.98 }}
-                className="glass-card p-8 rounded-3xl border border-slate-700/50 text-center group hover:border-purple-400/60 transition-all duration-500 relative overflow-hidden cursor-pointer bg-gradient-to-br from-slate-800/40 to-slate-900/60 backdrop-blur-xl"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/15 via-purple-500/10 to-purple-400/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute top-3 left-1/2 w-2 h-2 bg-purple-400 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping" style={{ animationDelay: '0.5s' }} />
-                
-                <motion.div 
-                  className="text-4xl xl:text-5xl font-bold text-purple-400 mb-4 relative z-10"
-                  whileHover={{ scale: 1.15, rotateZ: -5 }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                >
-                  ₹2M+
-                </motion.div>
-                <div className="text-lg font-semibold text-slate-100 relative z-10 group-hover:text-white transition-colors duration-300">Cost Savings</div>
-                <div className="text-sm text-slate-400 mt-2 relative z-10 group-hover:text-purple-300 transition-colors duration-300 font-medium">Generated for Clients</div>
-              </motion.div>
+            {/* Premium Analytics Dashboard Stats */}
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { 
+                  label: "Experience", 
+                  value: 4, 
+                  suffix: "+", 
+                  unit: "Years",
+                  icon: TrendingUp,
+                  color: "cyan",
+                  trend: "+15% YoY",
+                  desc: "Business Analytics"
+                },
+                { 
+                  label: "Projects", 
+                  value: 25, 
+                  suffix: "+", 
+                  unit: "Delivered",
+                  icon: BarChart3,
+                  color: "blue", 
+                  trend: "98% Success",
+                  desc: "Successfully Completed"
+                },
+                { 
+                  label: "Efficiency", 
+                  value: 40, 
+                  suffix: "%", 
+                  unit: "Improvement",
+                  icon: Activity,
+                  color: "indigo",
+                  trend: "Avg Gain",
+                  desc: "Process Optimization"
+                },
+                { 
+                  label: "Cost Savings", 
+                  value: 2, 
+                  suffix: "M+", 
+                  unit: "₹ Generated",
+                  icon: Zap,
+                  color: "purple",
+                  trend: "ROI 300%",
+                  desc: "Client Value"
+                },
+              ].map((stat, index) => {
+                const IconComponent = stat.icon;
+                return (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 30, scale: 0.8 }}
+                    animate={isStatsInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                    transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    className="relative bg-slate-900/70 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 group hover:border-cyan-500/40 transition-all duration-300 overflow-hidden"
+                  >
+                    {/* Background glow */}
+                    <div className={`absolute inset-0 bg-gradient-to-br from-${stat.color}-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                    
+                    {/* Header with icon and trend */}
+                    <div className="flex items-center justify-between mb-3">
+                      <div className={`p-2 rounded-lg bg-${stat.color}-500/20 border border-${stat.color}-500/30`}>
+                        <IconComponent className={`w-4 h-4 text-${stat.color}-400`} />
+                      </div>
+                      <div className={`px-2 py-1 rounded-full bg-${stat.color}-500/10 border border-${stat.color}-500/20`}>
+                        <span className={`text-xs font-medium text-${stat.color}-400`}>
+                          {stat.trend}
+                        </span>
+                      </div>
+                    </div>
+                    
+                    {/* Animated counter */}
+                    <div className="space-y-1">
+                      <motion.div
+                        initial={{ scale: 0.8 }}
+                        animate={isStatsInView ? { scale: 1 } : {}}
+                        transition={{ duration: 0.8, delay: 1 + index * 0.1 }}
+                        className="flex items-baseline gap-1"
+                      >
+                        <motion.span
+                          initial={{ opacity: 0 }}
+                          animate={isStatsInView ? { 
+                            opacity: 1,
+                          } : {}}
+                          transition={{ 
+                            opacity: { duration: 0.5, delay: 1.2 + index * 0.1 },
+                          }}
+                          className={`text-2xl xl:text-3xl font-bold bg-gradient-to-r from-${stat.color}-400 to-white bg-clip-text text-transparent`}
+                        >
+                          <CountUp end={isStatsInView ? stat.value : 0} duration={2} delay={1.2 + index * 0.1} />
+                        </motion.span>
+                        <span className={`text-xl font-bold text-${stat.color}-400`}>
+                          {stat.suffix}
+                        </span>
+                      </motion.div>
+                      
+                      <p className="text-slate-400 text-sm font-medium">
+                        {stat.unit}
+                      </p>
+                      <p className="text-slate-500 text-xs">
+                        {stat.desc}
+                      </p>
+                    </div>
+                    
+                    {/* Data visualization accent */}
+                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+                  </motion.div>
+                );
+              })}
             </div>
 
             {/* Interactive Key Skills */}
