@@ -179,10 +179,10 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start min-h-screen py-20"
+          className="grid lg:grid-cols-2 gap-16 items-center min-h-screen py-16 px-4"
         >
-          {/* Left Column - Main Analytics Identity (5 columns) */}
-          <div className="lg:col-span-5 space-y-12">
+          {/* Left Column - Main Content & Analytics Identity */}
+          <div className="space-y-8">
             {/* Analytics Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -204,7 +204,7 @@ export function HeroSection() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1, delay: 0.4 }}
               >
-                <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-none tracking-tight">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
                   <span className="block text-white/95 font-extralight">Vishnu</span>
                   <span className="block bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent font-bold tracking-wider">U K</span>
                 </h1>
@@ -219,11 +219,11 @@ export function HeroSection() {
               >
                 <div className="flex items-center gap-4">
                   <div className="h-1 w-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" />
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl text-white font-semibold tracking-wide">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl text-white font-semibold tracking-wide">
                     Business Analyst
                   </h2>
                 </div>
-                <p className="text-lg md:text-xl text-cyan-300 font-medium tracking-wide ml-16">
+                <p className="text-base md:text-lg text-cyan-300 font-medium tracking-wide">
                   ZeOmega • Bengaluru, India
                 </p>
               </motion.div>
@@ -233,7 +233,7 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.8 }}
-                className="ml-16"
+                className=""
               >
                 <div className="flex items-center gap-3 mb-4">
                   <TrendingUp className="w-5 h-5 text-cyan-400" />
@@ -254,7 +254,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 1.0 }}
-              className="space-y-8 ml-16"
+              className="space-y-6"
             >
               {/* Core Value Proposition */}
               <div className="space-y-6">
@@ -323,7 +323,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 1.2 }}
-              className="flex flex-wrap gap-6 ml-16 pt-6"
+              className="flex flex-wrap gap-4 pt-6"
             >
               <motion.a
                 href="#experience"
@@ -375,54 +375,50 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Center Column - Professional Photo (3 columns) */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="lg:col-span-3 flex flex-col items-center justify-center"
-          >
-            {/* Professional Photo with Premium Frame */}
-            <div className="relative group">
-              {/* Animated background glow */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-300 animate-pulse" />
-              
-              {/* Photo container */}
-              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 shadow-2xl">
-                {/* Glass overlay effect */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-blue-500/10 z-10" />
-                
-                {/* Professional photo placeholder - replace with actual photo */}
-                <div className="w-72 h-80 bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center relative">
-                  <div className="text-center space-y-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full mx-auto flex items-center justify-center">
-                      <span className="text-2xl font-bold text-white">VUK</span>
-                    </div>
-                    <div className="text-slate-300 font-medium">Professional Photo</div>
-                    <div className="text-slate-500 text-sm">Add your photo here</div>
-                  </div>
-                </div>
-                
-                {/* Analytics accent line */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-blue-500" />
-              </div>
-              
-              {/* Floating data points around photo */}
-              <div className="absolute -top-4 -right-4 w-3 h-3 bg-cyan-400 rounded-full animate-pulse" />
-              <div className="absolute -bottom-4 -left-4 w-2 h-2 bg-blue-400 rounded-full animate-bounce" />
-              <div className="absolute top-1/2 -left-6 w-1.5 h-1.5 bg-indigo-400 rounded-full animate-ping" />
-            </div>
-          </motion.div>
-
-          {/* Right Column - Interactive Stats & Skills (4 columns) */}
+          {/* Right Column - Combined Photo & Analytics Dashboard */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="lg:col-span-4 space-y-12"
+            className="space-y-8"
           >
+            {/* Professional Photo Section - Compact & Centered */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.6 }}
+              className="flex justify-center"
+            >
+              <div className="relative group">
+                {/* Animated background glow */}
+                <div className="absolute -inset-3 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300 animate-pulse" />
+                
+                {/* Photo container */}
+                <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 shadow-2xl">
+                  {/* Glass overlay effect */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-blue-500/10 z-10" />
+                  
+                  {/* Professional photo placeholder */}
+                  <div className="w-48 h-56 bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center relative">
+                    <div className="text-center space-y-3">
+                      <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full mx-auto flex items-center justify-center">
+                        <span className="text-xl font-bold text-white">VUK</span>
+                      </div>
+                      <div className="text-slate-300 font-medium text-sm">Professional Photo</div>
+                    </div>
+                  </div>
+                  
+                  {/* Analytics accent line */}
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-blue-500" />
+                </div>
+                
+                {/* Floating data points around photo */}
+                <div className="absolute -top-2 -right-2 w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
+                <div className="absolute -bottom-2 -left-2 w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" />
+              </div>
+            </motion.div>
             {/* Premium Analytics Dashboard Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-3">
               {[
                 { 
                   label: "Experience", 
@@ -472,8 +468,8 @@ export function HeroSection() {
                     initial={{ opacity: 0, y: 30, scale: 0.8 }}
                     animate={isStatsInView ? { opacity: 1, y: 0, scale: 1 } : {}}
                     transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                    whileHover={{ y: -8, scale: 1.02 }}
-                    className="relative bg-slate-900/70 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 group hover:border-cyan-500/40 transition-all duration-300 overflow-hidden"
+                    whileHover={{ y: -4, scale: 1.02 }}
+                    className="relative bg-slate-900/70 backdrop-blur-xl border border-slate-700/50 rounded-xl p-4 group hover:border-cyan-500/40 transition-all duration-300 overflow-hidden"
                   >
                     {/* Background glow */}
                     <div className={`absolute inset-0 bg-gradient-to-br from-${stat.color}-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
@@ -506,11 +502,11 @@ export function HeroSection() {
                           transition={{ 
                             opacity: { duration: 0.5, delay: 1.2 + index * 0.1 },
                           }}
-                          className={`text-2xl xl:text-3xl font-bold bg-gradient-to-r from-${stat.color}-400 to-white bg-clip-text text-transparent`}
+                          className={`text-xl xl:text-2xl font-bold bg-gradient-to-r from-${stat.color}-400 to-white bg-clip-text text-transparent`}
                         >
                           <CountUp end={isStatsInView ? stat.value : 0} duration={2} delay={1.2 + index * 0.1} />
                         </motion.span>
-                        <span className={`text-xl font-bold text-${stat.color}-400`}>
+                        <span className={`text-lg font-bold text-${stat.color}-400`}>
                           {stat.suffix}
                         </span>
                       </motion.div>
@@ -530,27 +526,27 @@ export function HeroSection() {
               })}
             </div>
 
-            {/* Interactive Key Skills */}
+            {/* Core Expertise Skills */}
             <motion.div 
-              whileHover={{ scale: 1.02, y: -5 }}
-              className="glass-card p-10 rounded-3xl border border-slate-700/50 hover:border-slate-600/60 transition-all duration-500 group bg-gradient-to-br from-slate-800/40 to-slate-900/60 backdrop-blur-xl"
+              whileHover={{ scale: 1.01, y: -2 }}
+              className="bg-slate-900/60 backdrop-blur-xl border border-slate-700/50 hover:border-slate-600/60 transition-all duration-500 group rounded-xl p-6"
             >
               <motion.h3 
-                className="text-2xl xl:text-3xl font-bold text-slate-100 mb-10 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-500 tracking-wide"
+                className="text-xl font-bold text-slate-100 mb-6 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-500 tracking-wide"
               >
                 Core Expertise
               </motion.h3>
-              <div className="space-y-8">
+              <div className="space-y-6">
                 <motion.div 
                   className="group/skill"
                   whileHover={{ x: 5 }}
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1 pr-4">
-                      <span className="text-slate-100 text-lg font-semibold group-hover/skill:text-blue-400 transition-colors duration-300 tracking-wide">Power BI & Dashboards</span>
-                      <span className="text-slate-400 text-sm block group-hover/skill:text-slate-300 transition-colors duration-300 font-medium mt-1">Advanced Analytics & Visualization</span>
+                      <span className="text-slate-100 text-base font-semibold group-hover/skill:text-blue-400 transition-colors duration-300 tracking-wide">Power BI & Dashboards</span>
+                      <span className="text-slate-400 text-xs block group-hover/skill:text-slate-300 transition-colors duration-300 font-medium mt-1">Advanced Analytics & Visualization</span>
                     </div>
-                    <span className="text-blue-400 text-base font-bold group-hover/skill:text-blue-300 transition-colors duration-300 min-w-[3rem] text-right">95%</span>
+                    <span className="text-blue-400 text-sm font-bold group-hover/skill:text-blue-300 transition-colors duration-300 min-w-[2.5rem] text-right">95%</span>
                   </div>
                   <div className="w-full h-3 bg-slate-700/60 rounded-full overflow-hidden group-hover/skill:bg-slate-600/60 transition-all duration-300 shadow-inner">
                     <motion.div 
@@ -571,10 +567,10 @@ export function HeroSection() {
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1 pr-4">
-                      <span className="text-slate-100 text-lg font-semibold group-hover/skill:text-indigo-400 transition-colors duration-300 tracking-wide">SQL & Data Analysis</span>
-                      <span className="text-slate-400 text-sm block group-hover/skill:text-slate-300 transition-colors duration-300 font-medium mt-1">Complex Queries & Database Design</span>
+                      <span className="text-slate-100 text-base font-semibold group-hover/skill:text-indigo-400 transition-colors duration-300 tracking-wide">SQL & Data Analysis</span>
+                      <span className="text-slate-400 text-xs block group-hover/skill:text-slate-300 transition-colors duration-300 font-medium mt-1">Complex Queries & Database Design</span>
                     </div>
-                    <span className="text-indigo-400 text-base font-bold group-hover/skill:text-indigo-300 transition-colors duration-300 min-w-[3rem] text-right">90%</span>
+                    <span className="text-indigo-400 text-sm font-bold group-hover/skill:text-indigo-300 transition-colors duration-300 min-w-[2.5rem] text-right">90%</span>
                   </div>
                   <div className="w-full h-3 bg-slate-700/60 rounded-full overflow-hidden group-hover/skill:bg-slate-600/60 transition-all duration-300 shadow-inner">
                     <motion.div 
@@ -595,10 +591,10 @@ export function HeroSection() {
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1 pr-4">
-                      <span className="text-slate-100 text-lg font-semibold group-hover/skill:text-cyan-400 transition-colors duration-300 tracking-wide">Business Intelligence</span>
-                      <span className="text-slate-400 text-sm block group-hover/skill:text-slate-300 transition-colors duration-300 font-medium mt-1">Strategic Decision Support</span>
+                      <span className="text-slate-100 text-base font-semibold group-hover/skill:text-cyan-400 transition-colors duration-300 tracking-wide">Business Intelligence</span>
+                      <span className="text-slate-400 text-xs block group-hover/skill:text-slate-300 transition-colors duration-300 font-medium mt-1">Strategic Decision Support</span>
                     </div>
-                    <span className="text-cyan-400 text-base font-bold group-hover/skill:text-cyan-300 transition-colors duration-300 min-w-[3rem] text-right">85%</span>
+                    <span className="text-cyan-400 text-sm font-bold group-hover/skill:text-cyan-300 transition-colors duration-300 min-w-[2.5rem] text-right">85%</span>
                   </div>
                   <div className="w-full h-3 bg-slate-700/60 rounded-full overflow-hidden group-hover/skill:bg-slate-600/60 transition-all duration-300 shadow-inner">
                     <motion.div 
@@ -619,10 +615,10 @@ export function HeroSection() {
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1 pr-4">
-                      <span className="text-slate-100 text-lg font-semibold group-hover/skill:text-purple-400 transition-colors duration-300 tracking-wide">Process Optimization</span>
-                      <span className="text-slate-400 text-sm block group-hover/skill:text-slate-300 transition-colors duration-300 font-medium mt-1">Workflow Enhancement & Automation</span>
+                      <span className="text-slate-100 text-base font-semibold group-hover/skill:text-purple-400 transition-colors duration-300 tracking-wide">Process Optimization</span>
+                      <span className="text-slate-400 text-xs block group-hover/skill:text-slate-300 transition-colors duration-300 font-medium mt-1">Workflow Enhancement & Automation</span>
                     </div>
-                    <span className="text-purple-400 text-base font-bold group-hover/skill:text-purple-300 transition-colors duration-300 min-w-[3rem] text-right">88%</span>
+                    <span className="text-purple-400 text-sm font-bold group-hover/skill:text-purple-300 transition-colors duration-300 min-w-[2.5rem] text-right">88%</span>
                   </div>
                   <div className="w-full h-3 bg-slate-700/60 rounded-full overflow-hidden group-hover/skill:bg-slate-600/60 transition-all duration-300 shadow-inner">
                     <motion.div 
