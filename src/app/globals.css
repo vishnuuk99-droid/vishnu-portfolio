@@ -94,6 +94,13 @@ body {
     box-shadow: 0 8px 32px var(--glass-shadow);
   }
   
+  .glass-panel {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  
   /* Premium Gradients */
   .gradient-primary {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);

@@ -168,9 +168,10 @@ export function ExperienceSection() {
           animate={isInView ? "visible" : "hidden"}
           className="relative"
         >
-          {/* Premium Timeline Line */}
-          <div className="absolute left-6 lg:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-blue-400/50 via-purple-400/50 to-cyan-400/50 transform lg:-translate-x-1/2 shadow-lg" />
-          <div className="absolute left-6 lg:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent transform lg:-translate-x-1/2 blur-sm" />
+          {/* Premium Timeline Line - Enhanced Visibility */}
+          <div className="absolute left-6 lg:left-1/2 top-0 bottom-0 w-0.5 bg-blue-400 transform lg:-translate-x-1/2 shadow-2xl z-10" />
+          <div className="absolute left-6 lg:left-1/2 top-0 bottom-0 w-1 bg-blue-400/20 transform lg:-translate-x-1/2 blur-sm z-5" />
+          <div className="absolute left-6 lg:left-1/2 top-0 bottom-0 w-px bg-white/30 transform lg:-translate-x-1/2 z-15" />
 
           {experiences.map((exp, index) => {
             const IconComponent = exp.icon;
@@ -184,7 +185,7 @@ export function ExperienceSection() {
               >
                 {/* Premium Timeline Node */}
                 <motion.div 
-                  className={`absolute left-6 lg:left-1/2 w-12 h-12 transform lg:-translate-x-1/2 z-20`}
+                  className={`absolute left-6 lg:left-1/2 w-12 h-12 transform lg:-translate-x-1/2 z-30`}
                   whileHover={{ scale: 1.2, rotate: 360 }}
                   transition={{ duration: 0.5 }}
                 >

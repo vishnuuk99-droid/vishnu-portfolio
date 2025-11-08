@@ -196,37 +196,80 @@ export function HeroSection() {
               </div>
               <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
             </motion.div>
-            {/* Premium Analytics Identity Header */}
-            <div className="space-y-8">
-              {/* Name with Premium Typography */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1, delay: 0.4 }}
-              >
-                <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
-                  <span className="text-white/95 font-extralight">Vishnu </span>
-                  <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent font-bold tracking-wider">U K</span>
-                </h1>
-              </motion.div>
+            
+            {/* Name Section with Photo Side-by-Side */}
+            <div className="flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-8">
+              {/* Name and Title */}
+              <div className="flex-1">
+                {/* Name with Premium Typography */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 1, delay: 0.4 }}
+                >
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tight whitespace-nowrap">
+                    <span className="text-white/95 font-extralight">Vishnu </span>
+                    <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent font-bold tracking-wider">U K</span>
+                  </h1>
+                </motion.div>
 
-              {/* Professional Title with Analytics Flair */}
+                {/* Professional Title with Analytics Flair */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 1, delay: 0.6 }}
+                  className="space-y-3 mt-4"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="h-1 w-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" />
+                    <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-semibold tracking-wide">
+                      Business Analyst
+                    </h2>
+                  </div>
+                  <p className="text-sm sm:text-base md:text-lg text-cyan-300 font-medium tracking-wide">
+                    ZeOmega • Bengaluru, India
+                  </p>
+                </motion.div>
+              </div>
+
+              {/* Professional Photo - Side by Side on Desktop, Below on Mobile */}
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, delay: 0.6 }}
-                className="space-y-3"
+                className="flex justify-center lg:justify-end"
               >
-                <div className="flex items-center gap-4">
-                  <div className="h-1 w-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" />
-                  <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-semibold tracking-wide">
-                    Business Analyst
-                  </h2>
+                <div className="relative group">
+                  {/* Animated background glow */}
+                  <div className="absolute -inset-5 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300 animate-pulse" />
+                  
+                  {/* Photo container */}
+                  <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 shadow-2xl">
+                    {/* Glass overlay effect */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-blue-500/10 z-10" />
+                    
+                    {/* Professional photo */}
+                    <div className="w-32 h-40 sm:w-40 sm:h-48 md:w-48 md:h-56 lg:w-56 lg:h-64 relative overflow-hidden">
+                      <img 
+                        src="/vishnu-professional-1.jpg" 
+                        alt="Vishnu U K - Business Analyst" 
+                        className="w-full h-full object-cover object-center"
+                      />
+                    </div>
+                    
+                    {/* Analytics accent line */}
+                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-blue-500" />
+                  </div>
+                  
+                  {/* Floating data points around photo */}
+                  <div className="absolute -top-2 -right-2 w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
+                  <div className="absolute -bottom-2 -left-2 w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" />
                 </div>
-                <p className="text-sm sm:text-base md:text-lg text-cyan-300 font-medium tracking-wide">
-                  ZeOmega • Bengaluru, India
-                </p>
               </motion.div>
+            </div>
+
+            {/* Continue with other sections */}
+            <div className="space-y-8">
 
               {/* Premium Analytics Tagline */}
               <motion.div
@@ -284,36 +327,108 @@ export function HeroSection() {
                 </div>
               </div>
 
-              {/* Tech Stack with Analytics Flair */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-white/90 flex items-center gap-2">
-                  <div className="w-1 h-5 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full" />
+              {/* Tech Stack with Analytics Flair - Enhanced Mobile Visibility */}
+              <div className="space-y-6">
+                <h3 className="text-xl font-bold text-white flex items-center gap-3">
+                  <div className="w-1 h-6 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full" />
                   Analytics Technology Stack
                 </h3>
-                <div className="flex flex-wrap gap-2 max-w-4xl">
-                  {[
-                    { name: 'Power BI', level: 'Expert', color: 'cyan' },
-                    { name: 'SQL Server', level: 'Advanced', color: 'blue' },
-                    { name: 'Azure', level: 'Proficient', color: 'indigo' },
-                    { name: 'Python', level: 'Intermediate', color: 'purple' },
-                    { name: 'DAX', level: 'Expert', color: 'cyan' },
-                    { name: 'SSRS', level: 'Advanced', color: 'blue' },
-                    { name: 'Tableau', level: 'Proficient', color: 'indigo' },
-                    { name: 'Excel VBA', level: 'Advanced', color: 'purple' }
-                  ].map((skill) => (
-                    <motion.div 
-                      key={skill.name} 
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      className={`group px-4 py-2 bg-gradient-to-r from-${skill.color}-500/10 to-${skill.color}-600/10 border border-${skill.color}-400/30 rounded-lg backdrop-blur-sm hover:border-${skill.color}-400/50 transition-all duration-300 cursor-pointer`}
-                    >
-                      <span className={`text-sm font-medium text-${skill.color}-300 group-hover:text-${skill.color}-200 transition-colors duration-300`}>
-                        {skill.name}
-                      </span>
-                      <span className="text-xs text-slate-400 ml-2">
-                        {skill.level}
-                      </span>
-                    </motion.div>
-                  ))}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                  <motion.div 
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className="group px-3 py-3 bg-gradient-to-r from-cyan-500/20 to-cyan-600/20 border border-cyan-400/40 rounded-xl backdrop-blur-sm hover:border-cyan-400/60 transition-all duration-300 cursor-pointer"
+                  >
+                    <div className="text-sm font-semibold text-cyan-300 group-hover:text-cyan-200 transition-colors duration-300">
+                      Power BI
+                    </div>
+                    <div className="text-xs text-cyan-400/80 mt-1 font-medium">
+                      Expert
+                    </div>
+                  </motion.div>
+
+                  <motion.div 
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className="group px-3 py-3 bg-gradient-to-r from-blue-500/20 to-blue-600/20 border border-blue-400/40 rounded-xl backdrop-blur-sm hover:border-blue-400/60 transition-all duration-300 cursor-pointer"
+                  >
+                    <div className="text-sm font-semibold text-blue-300 group-hover:text-blue-200 transition-colors duration-300">
+                      SQL Server
+                    </div>
+                    <div className="text-xs text-blue-400/80 mt-1 font-medium">
+                      Advanced
+                    </div>
+                  </motion.div>
+
+                  <motion.div 
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className="group px-3 py-3 bg-gradient-to-r from-indigo-500/20 to-indigo-600/20 border border-indigo-400/40 rounded-xl backdrop-blur-sm hover:border-indigo-400/60 transition-all duration-300 cursor-pointer"
+                  >
+                    <div className="text-sm font-semibold text-indigo-300 group-hover:text-indigo-200 transition-colors duration-300">
+                      Azure
+                    </div>
+                    <div className="text-xs text-indigo-400/80 mt-1 font-medium">
+                      Proficient
+                    </div>
+                  </motion.div>
+
+                  <motion.div 
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className="group px-3 py-3 bg-gradient-to-r from-purple-500/20 to-purple-600/20 border border-purple-400/40 rounded-xl backdrop-blur-sm hover:border-purple-400/60 transition-all duration-300 cursor-pointer"
+                  >
+                    <div className="text-sm font-semibold text-purple-300 group-hover:text-purple-200 transition-colors duration-300">
+                      Python
+                    </div>
+                    <div className="text-xs text-purple-400/80 mt-1 font-medium">
+                      Intermediate
+                    </div>
+                  </motion.div>
+
+                  <motion.div 
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className="group px-3 py-3 bg-gradient-to-r from-cyan-500/20 to-cyan-600/20 border border-cyan-400/40 rounded-xl backdrop-blur-sm hover:border-cyan-400/60 transition-all duration-300 cursor-pointer"
+                  >
+                    <div className="text-sm font-semibold text-cyan-300 group-hover:text-cyan-200 transition-colors duration-300">
+                      DAX
+                    </div>
+                    <div className="text-xs text-cyan-400/80 mt-1 font-medium">
+                      Expert
+                    </div>
+                  </motion.div>
+
+                  <motion.div 
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className="group px-3 py-3 bg-gradient-to-r from-blue-500/20 to-blue-600/20 border border-blue-400/40 rounded-xl backdrop-blur-sm hover:border-blue-400/60 transition-all duration-300 cursor-pointer"
+                  >
+                    <div className="text-sm font-semibold text-blue-300 group-hover:text-blue-200 transition-colors duration-300">
+                      SSRS
+                    </div>
+                    <div className="text-xs text-blue-400/80 mt-1 font-medium">
+                      Advanced
+                    </div>
+                  </motion.div>
+
+                  <motion.div 
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className="group px-3 py-3 bg-gradient-to-r from-indigo-500/20 to-indigo-600/20 border border-indigo-400/40 rounded-xl backdrop-blur-sm hover:border-indigo-400/60 transition-all duration-300 cursor-pointer"
+                  >
+                    <div className="text-sm font-semibold text-indigo-300 group-hover:text-indigo-200 transition-colors duration-300">
+                      Tableau
+                    </div>
+                    <div className="text-xs text-indigo-400/80 mt-1 font-medium">
+                      Proficient
+                    </div>
+                  </motion.div>
+
+                  <motion.div 
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className="group px-3 py-3 bg-gradient-to-r from-purple-500/20 to-purple-600/20 border border-purple-400/40 rounded-xl backdrop-blur-sm hover:border-purple-400/60 transition-all duration-300 cursor-pointer"
+                  >
+                    <div className="text-sm font-semibold text-purple-300 group-hover:text-purple-200 transition-colors duration-300">
+                      Excel VBA
+                    </div>
+                    <div className="text-xs text-purple-400/80 mt-1 font-medium">
+                      Advanced
+                    </div>
+                  </motion.div>
                 </div>
               </div>
             </motion.div>
@@ -382,39 +497,70 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="space-y-4 sm:space-y-6 order-2"
           >
-            {/* Professional Photo Section - Compact & Centered */}
+            {/* Core Expertise */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.6 }}
-              className="flex justify-center"
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="relative"
             >
-              <div className="relative group">
-                {/* Animated background glow */}
-                <div className="absolute -inset-5 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300 animate-pulse" />
-                
-                {/* Photo container */}
-                <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 shadow-2xl">
-                  {/* Glass overlay effect */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-blue-500/10 z-10" />
-                  
-                  {/* Professional photo */}
-                  <div className="w-48 h-56 sm:w-56 sm:h-64 md:w-64 md:h-72 lg:w-72 lg:h-80 relative overflow-hidden mx-auto">
-                    <img 
-                      src="/vishnu-professional-1.jpg" 
-                      alt="Vishnu U K - Business Analyst" 
-                      className="w-full h-full object-cover object-center"
-                    />
-                  </div>
-                  
-                  {/* Analytics accent line */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-blue-500" />
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-xl blur-xl" />
+              <div className="relative bg-slate-900/80 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4 sm:p-6">
+                <h3 className="text-cyan-400 text-sm font-semibold tracking-wider mb-3 flex items-center">
+                  <div className="w-2 h-2 bg-cyan-400 rounded-full mr-2" />
+                  CORE EXPERTISE
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {['Power BI Analytics', 'SQL Data Mining', 'Healthcare Systems', 'Process Optimization'].map((skill, index) => (
+                    <motion.div 
+                      key={skill}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.8 + index * 0.1 }}
+                      className="flex items-center space-x-2 text-slate-300 hover:text-white transition-colors"
+                    >
+                      <div className="w-1.5 h-1.5 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full" />
+                      <span className="text-sm">{skill}</span>
+                    </motion.div>
+                  ))}
                 </div>
-                
-                {/* Floating data points around photo */}
-                <div className="absolute -top-2 -right-2 w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
-                <div className="absolute -bottom-2 -left-2 w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" />
               </div>
+            </motion.div>
+
+            {/* Live Analytics Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+              className="grid grid-cols-3 gap-3 sm:gap-4"
+            >
+              {[
+                { label: 'Projects', value: 25, suffix: '+', icon: '📊' },
+                { label: 'Clients', value: 15, suffix: '+', icon: '🏢' },
+                { label: 'ROI', value: 300, suffix: '%', icon: '📈' }
+              ].map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: '0 10px 30px rgba(6, 182, 212, 0.3)'
+                  }}
+                  className="relative group"
+                >
+                  {/* Animated background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-lg blur-sm group-hover:blur-none transition-all duration-300" />
+                  
+                  {/* Content */}
+                  <div className="relative bg-slate-800/90 backdrop-blur-sm border border-slate-600/30 rounded-lg p-3 sm:p-4 text-center hover:border-cyan-500/50 transition-all duration-300">
+                    <div className="text-xl sm:text-2xl mb-1">{stat.icon}</div>
+                    <div className="text-lg sm:text-xl font-bold text-white">
+                      <CountUp end={stat.value} duration={2} delay={1 + index * 0.2} />
+                      {stat.suffix}
+                    </div>
+                    <div className="text-xs text-slate-400 font-medium tracking-wide">{stat.label}</div>
+                  </div>
+                </motion.div>
+              ))}
             </motion.div>
             {/* Premium Analytics Dashboard Stats */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
