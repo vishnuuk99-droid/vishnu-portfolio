@@ -176,13 +176,13 @@ export function HeroSection() {
       {/* Premium Analytics Content Layout */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-start min-h-screen py-20"
+          className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start min-h-screen py-20"
         >
-          {/* Left Column - Main Analytics Identity (7 columns) */}
-          <div className="lg:col-span-7 space-y-12">
+          {/* Left Column - Main Analytics Identity (5 columns) */}
+          <div className="lg:col-span-5 space-y-12">
             {/* Analytics Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -323,7 +323,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 1.2 }}
-              className="flex flex-wrap gap-6 ml-16 pt-8"
+              className="flex flex-wrap gap-6 ml-16 pt-6"
             >
               <motion.a
                 href="#experience"
@@ -375,15 +375,54 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right Column - Interactive Stats & Skills (2 columns) */}
+          {/* Center Column - Professional Photo (3 columns) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.6 }}
+            className="lg:col-span-3 flex flex-col items-center justify-center"
+          >
+            {/* Professional Photo with Premium Frame */}
+            <div className="relative group">
+              {/* Animated background glow */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-300 animate-pulse" />
+              
+              {/* Photo container */}
+              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 shadow-2xl">
+                {/* Glass overlay effect */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-blue-500/10 z-10" />
+                
+                {/* Professional photo placeholder - replace with actual photo */}
+                <div className="w-72 h-80 bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center relative">
+                  <div className="text-center space-y-4">
+                    <div className="w-20 h-20 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full mx-auto flex items-center justify-center">
+                      <span className="text-2xl font-bold text-white">VUK</span>
+                    </div>
+                    <div className="text-slate-300 font-medium">Professional Photo</div>
+                    <div className="text-slate-500 text-sm">Add your photo here</div>
+                  </div>
+                </div>
+                
+                {/* Analytics accent line */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-blue-500" />
+              </div>
+              
+              {/* Floating data points around photo */}
+              <div className="absolute -top-4 -right-4 w-3 h-3 bg-cyan-400 rounded-full animate-pulse" />
+              <div className="absolute -bottom-4 -left-4 w-2 h-2 bg-blue-400 rounded-full animate-bounce" />
+              <div className="absolute top-1/2 -left-6 w-1.5 h-1.5 bg-indigo-400 rounded-full animate-ping" />
+            </div>
+          </motion.div>
+
+          {/* Right Column - Interactive Stats & Skills (4 columns) */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="lg:col-span-2 space-y-12"
+            className="lg:col-span-4 space-y-12"
           >
             {/* Premium Analytics Dashboard Stats */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
                 { 
                   label: "Experience", 
@@ -503,91 +542,99 @@ export function HeroSection() {
               </motion.h3>
               <div className="space-y-8">
                 <motion.div 
-                  className="flex justify-between items-center group/skill"
-                  whileHover={{ x: 10 }}
+                  className="group/skill"
+                  whileHover={{ x: 5 }}
                 >
-                  <div className="flex-1">
-                    <span className="text-slate-100 text-lg font-semibold group-hover/skill:text-blue-400 transition-colors duration-300 tracking-wide">Power BI & Dashboards</span>
-                    <span className="text-slate-400 text-base block group-hover/skill:text-slate-300 transition-colors duration-300 font-medium mt-1">Advanced Analytics & Visualization</span>
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1 pr-4">
+                      <span className="text-slate-100 text-lg font-semibold group-hover/skill:text-blue-400 transition-colors duration-300 tracking-wide">Power BI & Dashboards</span>
+                      <span className="text-slate-400 text-sm block group-hover/skill:text-slate-300 transition-colors duration-300 font-medium mt-1">Advanced Analytics & Visualization</span>
+                    </div>
+                    <span className="text-blue-400 text-base font-bold group-hover/skill:text-blue-300 transition-colors duration-300 min-w-[3rem] text-right">95%</span>
                   </div>
-                  <div className="w-36 h-4 bg-slate-700/60 rounded-full overflow-hidden ml-8 group-hover/skill:bg-slate-600/60 transition-all duration-300 shadow-inner">
+                  <div className="w-full h-3 bg-slate-700/60 rounded-full overflow-hidden group-hover/skill:bg-slate-600/60 transition-all duration-300 shadow-inner">
                     <motion.div 
                       initial={{ width: 0 }}
                       animate={{ width: '95%' }}
-                      whileHover={{ scale: 1.05 }}
+                      whileHover={{ scale: 1.02 }}
                       transition={{ duration: 1.8, delay: 0.8, ease: "easeOut" }}
                       className="h-full bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 rounded-full relative overflow-hidden shadow-lg"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/40 to-white/0 -translate-x-full animate-pulse" />
                     </motion.div>
                   </div>
-                  <span className="text-blue-400 text-lg font-bold ml-4 group-hover/skill:text-blue-300 transition-colors duration-300 min-w-[3rem]">95%</span>
                 </motion.div>
                 
                 <motion.div 
-                  className="flex justify-between items-center group/skill"
-                  whileHover={{ x: 10 }}
+                  className="group/skill"
+                  whileHover={{ x: 5 }}
                 >
-                  <div className="flex-1">
-                    <span className="text-slate-100 text-lg font-semibold group-hover/skill:text-indigo-400 transition-colors duration-300 tracking-wide">SQL & Data Analysis</span>
-                    <span className="text-slate-400 text-base block group-hover/skill:text-slate-300 transition-colors duration-300 font-medium mt-1">Complex Queries & Database Design</span>
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1 pr-4">
+                      <span className="text-slate-100 text-lg font-semibold group-hover/skill:text-indigo-400 transition-colors duration-300 tracking-wide">SQL & Data Analysis</span>
+                      <span className="text-slate-400 text-sm block group-hover/skill:text-slate-300 transition-colors duration-300 font-medium mt-1">Complex Queries & Database Design</span>
+                    </div>
+                    <span className="text-indigo-400 text-base font-bold group-hover/skill:text-indigo-300 transition-colors duration-300 min-w-[3rem] text-right">90%</span>
                   </div>
-                  <div className="w-36 h-4 bg-slate-700/60 rounded-full overflow-hidden ml-8 group-hover/skill:bg-slate-600/60 transition-all duration-300 shadow-inner">
+                  <div className="w-full h-3 bg-slate-700/60 rounded-full overflow-hidden group-hover/skill:bg-slate-600/60 transition-all duration-300 shadow-inner">
                     <motion.div 
                       initial={{ width: 0 }}
                       animate={{ width: '90%' }}
-                      whileHover={{ scale: 1.05 }}
+                      whileHover={{ scale: 1.02 }}
                       transition={{ duration: 1.8, delay: 1.0, ease: "easeOut" }}
                       className="h-full bg-gradient-to-r from-indigo-500 via-indigo-400 to-indigo-600 rounded-full relative overflow-hidden shadow-lg"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/40 to-white/0 -translate-x-full animate-pulse" />
                     </motion.div>
                   </div>
-                  <span className="text-indigo-400 text-lg font-bold ml-4 group-hover/skill:text-indigo-300 transition-colors duration-300 min-w-[3rem]">90%</span>
                 </motion.div>
                 
                 <motion.div 
-                  className="flex justify-between items-center group/skill"
-                  whileHover={{ x: 10 }}
+                  className="group/skill"
+                  whileHover={{ x: 5 }}
                 >
-                  <div className="flex-1">
-                    <span className="text-slate-100 text-lg font-semibold group-hover/skill:text-cyan-400 transition-colors duration-300 tracking-wide">Business Intelligence</span>
-                    <span className="text-slate-400 text-base block group-hover/skill:text-slate-300 transition-colors duration-300 font-medium mt-1">Strategic Decision Support</span>
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1 pr-4">
+                      <span className="text-slate-100 text-lg font-semibold group-hover/skill:text-cyan-400 transition-colors duration-300 tracking-wide">Business Intelligence</span>
+                      <span className="text-slate-400 text-sm block group-hover/skill:text-slate-300 transition-colors duration-300 font-medium mt-1">Strategic Decision Support</span>
+                    </div>
+                    <span className="text-cyan-400 text-base font-bold group-hover/skill:text-cyan-300 transition-colors duration-300 min-w-[3rem] text-right">85%</span>
                   </div>
-                  <div className="w-36 h-4 bg-slate-700/60 rounded-full overflow-hidden ml-8 group-hover/skill:bg-slate-600/60 transition-all duration-300 shadow-inner">
+                  <div className="w-full h-3 bg-slate-700/60 rounded-full overflow-hidden group-hover/skill:bg-slate-600/60 transition-all duration-300 shadow-inner">
                     <motion.div 
                       initial={{ width: 0 }}
                       animate={{ width: '85%' }}
-                      whileHover={{ scale: 1.05 }}
+                      whileHover={{ scale: 1.02 }}
                       transition={{ duration: 1.8, delay: 1.2, ease: "easeOut" }}
                       className="h-full bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-600 rounded-full relative overflow-hidden shadow-lg"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/40 to-white/0 -translate-x-full animate-pulse" />
                     </motion.div>
                   </div>
-                  <span className="text-cyan-400 text-lg font-bold ml-4 group-hover/skill:text-cyan-300 transition-colors duration-300 min-w-[3rem]">85%</span>
                 </motion.div>
                 
                 <motion.div 
-                  className="flex justify-between items-center group/skill"
-                  whileHover={{ x: 10 }}
+                  className="group/skill"
+                  whileHover={{ x: 5 }}
                 >
-                  <div className="flex-1">
-                    <span className="text-slate-100 text-lg font-semibold group-hover/skill:text-purple-400 transition-colors duration-300 tracking-wide">Process Optimization</span>
-                    <span className="text-slate-400 text-base block group-hover/skill:text-slate-300 transition-colors duration-300 font-medium mt-1">Workflow Enhancement & Automation</span>
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1 pr-4">
+                      <span className="text-slate-100 text-lg font-semibold group-hover/skill:text-purple-400 transition-colors duration-300 tracking-wide">Process Optimization</span>
+                      <span className="text-slate-400 text-sm block group-hover/skill:text-slate-300 transition-colors duration-300 font-medium mt-1">Workflow Enhancement & Automation</span>
+                    </div>
+                    <span className="text-purple-400 text-base font-bold group-hover/skill:text-purple-300 transition-colors duration-300 min-w-[3rem] text-right">88%</span>
                   </div>
-                  <div className="w-36 h-4 bg-slate-700/60 rounded-full overflow-hidden ml-8 group-hover/skill:bg-slate-600/60 transition-all duration-300 shadow-inner">
+                  <div className="w-full h-3 bg-slate-700/60 rounded-full overflow-hidden group-hover/skill:bg-slate-600/60 transition-all duration-300 shadow-inner">
                     <motion.div 
                       initial={{ width: 0 }}
                       animate={{ width: '88%' }}
-                      whileHover={{ scale: 1.05 }}
+                      whileHover={{ scale: 1.02 }}
                       transition={{ duration: 1.8, delay: 1.4, ease: "easeOut" }}
                       className="h-full bg-gradient-to-r from-purple-500 via-purple-400 to-purple-600 rounded-full relative overflow-hidden shadow-lg"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/40 to-white/0 -translate-x-full animate-pulse" />
                     </motion.div>
                   </div>
-                  <span className="text-purple-400 text-lg font-bold ml-4 group-hover/skill:text-purple-300 transition-colors duration-300 min-w-[3rem]">88%</span>
                 </motion.div>
               </div>
             </motion.div>
