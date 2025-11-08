@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "deploy:github": "npm run build && npm run export && git add dist && git commit -m 'Deploy to GitHub Pages' && git subtree push --prefix dist origin gh-pages",
+    "deploy:netlify": "npm run build && npm run export",
+    "deploy:vercel": "npm run build"
+  }
+}
