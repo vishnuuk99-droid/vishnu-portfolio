@@ -179,10 +179,10 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="grid lg:grid-cols-2 gap-16 items-center min-h-screen py-16 px-4"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start lg:items-center min-h-screen py-8 lg:py-16 px-4"
         >
           {/* Left Column - Main Content & Analytics Identity */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8 lg:order-1 order-2">
             {/* Analytics Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -204,7 +204,7 @@ export function HeroSection() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1, delay: 0.4 }}
               >
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
                   <span className="text-white/95 font-extralight">Vishnu </span>
                   <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent font-bold tracking-wider">U K</span>
                 </h1>
@@ -219,11 +219,11 @@ export function HeroSection() {
               >
                 <div className="flex items-center gap-4">
                   <div className="h-1 w-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" />
-                  <h2 className="text-xl md:text-2xl lg:text-3xl text-white font-semibold tracking-wide">
+                  <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-semibold tracking-wide">
                     Business Analyst
                   </h2>
                 </div>
-                <p className="text-base md:text-lg text-cyan-300 font-medium tracking-wide">
+                <p className="text-sm sm:text-base md:text-lg text-cyan-300 font-medium tracking-wide">
                   ZeOmega • Bengaluru, India
                 </p>
               </motion.div>
@@ -237,11 +237,11 @@ export function HeroSection() {
               >
                 <div className="flex items-center gap-3 mb-4">
                   <TrendingUp className="w-5 h-5 text-cyan-400" />
-                  <span className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white to-cyan-200 bg-clip-text text-transparent">
+                  <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white to-cyan-200 bg-clip-text text-transparent">
                     Turning Data into Decisions
                   </span>
                 </div>
-                <p className="text-lg text-slate-300 font-light max-w-2xl leading-relaxed">
+                <p className="text-base sm:text-lg text-slate-300 font-light max-w-2xl leading-relaxed">
                   Transforming complex datasets into strategic insights that drive 
                   <span className="text-cyan-400 font-semibold"> 40% efficiency gains</span> and 
                   <span className="text-blue-400 font-semibold"> ₹2M+ cost savings</span>
@@ -323,7 +323,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 1.2 }}
-              className="flex flex-wrap gap-4 pt-6"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-6"
             >
               <motion.a
                 href="#experience"
@@ -336,7 +336,7 @@ export function HeroSection() {
                   y: -3,
                 }}
                 whileTap={{ scale: 0.98 }}
-                className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-semibold text-white transition-all duration-300 flex items-center gap-3 shadow-2xl overflow-hidden min-w-[200px]"
+                className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-semibold text-white transition-all duration-300 flex items-center justify-center gap-3 shadow-2xl overflow-hidden w-full sm:min-w-[200px] sm:w-auto"
               >
                 {/* Animated background */}
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -344,7 +344,7 @@ export function HeroSection() {
                 
                 {/* Content */}
                 <BarChart3 className="w-5 h-5 relative z-10 group-hover:rotate-12 transition-transform duration-300" />
-                <span className="relative z-10 text-lg">View Journey</span>
+                <span className="relative z-10 text-base sm:text-lg">View Journey</span>
                 <motion.div
                   animate={{ x: [0, 3, 0] }}
                   transition={{ repeat: Infinity, duration: 2 }}
@@ -362,14 +362,14 @@ export function HeroSection() {
                   y: -3,
                 }}
                 whileTap={{ scale: 0.98 }}
-                className="group relative px-8 py-4 border-2 border-cyan-400/40 rounded-xl font-semibold text-cyan-300 hover:text-white backdrop-blur-sm transition-all duration-300 flex items-center gap-3 bg-cyan-500/5 hover:bg-cyan-500/10 min-w-[200px]"
+                className="group relative px-6 sm:px-8 py-3 sm:py-4 border-2 border-cyan-400/40 rounded-xl font-semibold text-cyan-300 hover:text-white backdrop-blur-sm transition-all duration-300 flex items-center justify-center gap-3 bg-cyan-500/5 hover:bg-cyan-500/10 w-full sm:min-w-[200px] sm:w-auto"
               >
                 {/* Glow effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 {/* Content */}
                 <Download className="w-5 h-5 relative z-10 group-hover:translate-y-[-1px] transition-transform duration-300" />
-                <span className="relative z-10 text-lg">Download CV</span>
+                <span className="relative z-10 text-base sm:text-lg">Download CV</span>
                 <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse relative z-10" />
               </motion.a>
             </motion.div>
@@ -380,7 +380,7 @@ export function HeroSection() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6 lg:order-2 order-1"
           >
             {/* Professional Photo Section - Compact & Centered */}
             <motion.div
@@ -399,7 +399,7 @@ export function HeroSection() {
                   <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-blue-500/10 z-10" />
                   
                   {/* Professional photo */}
-                  <div className="w-72 h-80 relative overflow-hidden">
+                  <div className="w-48 h-56 sm:w-56 sm:h-64 md:w-64 md:h-72 lg:w-72 lg:h-80 relative overflow-hidden mx-auto">
                     <img 
                       src="/vishnu-professional-1.jpg" 
                       alt="Vishnu U K - Business Analyst" 
@@ -417,7 +417,7 @@ export function HeroSection() {
               </div>
             </motion.div>
             {/* Premium Analytics Dashboard Stats */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 { 
                   label: "Experience", 
@@ -468,7 +468,7 @@ export function HeroSection() {
                     animate={isStatsInView ? { opacity: 1, y: 0, scale: 1 } : {}}
                     transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
                     whileHover={{ y: -4, scale: 1.02 }}
-                    className="relative bg-slate-900/70 backdrop-blur-xl border border-slate-700/50 rounded-xl p-4 group hover:border-cyan-500/40 transition-all duration-300 overflow-hidden"
+                    className="relative bg-slate-900/70 backdrop-blur-xl border border-slate-700/50 rounded-xl p-3 sm:p-4 group hover:border-cyan-500/40 transition-all duration-300 overflow-hidden"
                   >
                     {/* Background glow */}
                     <div className={`absolute inset-0 bg-gradient-to-br from-${stat.color}-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
@@ -528,7 +528,7 @@ export function HeroSection() {
             {/* Core Expertise Skills */}
             <motion.div 
               whileHover={{ scale: 1.01, y: -2 }}
-              className="bg-slate-900/60 backdrop-blur-xl border border-slate-700/50 hover:border-slate-600/60 transition-all duration-500 group rounded-xl p-6"
+              className="bg-slate-900/60 backdrop-blur-xl border border-slate-700/50 hover:border-slate-600/60 transition-all duration-500 group rounded-xl p-4 sm:p-6"
             >
               <motion.h3 
                 className="text-xl font-bold text-slate-100 mb-6 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-500 tracking-wide"
