@@ -182,7 +182,7 @@ export function HeroSection() {
           className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start lg:items-center min-h-screen py-8 lg:py-16 px-4"
         >
           {/* Left Column - Main Content & Analytics Identity */}
-          <div className="space-y-6 sm:space-y-8 lg:order-1 order-2">
+          <div className="space-y-6 sm:space-y-8 order-1">
             {/* Analytics Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -380,7 +380,7 @@ export function HeroSection() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="space-y-4 sm:space-y-6 lg:order-2 order-1"
+            className="space-y-4 sm:space-y-6 order-2"
           >
             {/* Professional Photo Section - Compact & Centered */}
             <motion.div
