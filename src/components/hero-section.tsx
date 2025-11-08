@@ -205,8 +205,8 @@ export function HeroSection() {
                 transition={{ duration: 1, delay: 0.4 }}
               >
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
-                  <span className="block text-white/95 font-extralight">Vishnu</span>
-                  <span className="block bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent font-bold tracking-wider">U K</span>
+                  <span className="text-white/95 font-extralight">Vishnu </span>
+                  <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent font-bold tracking-wider">U K</span>
                 </h1>
               </motion.div>
 
@@ -398,14 +398,13 @@ export function HeroSection() {
                   {/* Glass overlay effect */}
                   <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-blue-500/10 z-10" />
                   
-                  {/* Professional photo placeholder */}
-                  <div className="w-48 h-56 bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center relative">
-                    <div className="text-center space-y-3">
-                      <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full mx-auto flex items-center justify-center">
-                        <span className="text-xl font-bold text-white">VUK</span>
-                      </div>
-                      <div className="text-slate-300 font-medium text-sm">Professional Photo</div>
-                    </div>
+                  {/* Professional photo */}
+                  <div className="w-48 h-56 relative overflow-hidden">
+                    <img 
+                      src="/vishnu-professional-1.jpg" 
+                      alt="Vishnu U K - Business Analyst" 
+                      className="w-full h-full object-cover object-center"
+                    />
                   </div>
                   
                   {/* Analytics accent line */}
