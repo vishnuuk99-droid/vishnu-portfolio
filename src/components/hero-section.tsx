@@ -98,7 +98,7 @@ export function HeroSection() {
               className="space-y-8 max-w-4xl"
             >
               <p className="text-lg md:text-xl lg:text-2xl text-slate-100 leading-relaxed font-normal tracking-wide">
-                Dedicated Business Analyst with <span className="text-blue-400 font-semibold bg-blue-400/10 px-2 py-1 rounded-lg">4 years of experience</span> transforming complex data into actionable insights. 
+                Dedicated Business Analyst with <span className="text-blue-400 font-semibold bg-blue-400/10 px-2 py-1 rounded-lg">4+ years of experience</span> transforming complex data into actionable insights. 
                 Currently driving digital transformation initiatives at ZeOmega, specializing in healthcare analytics and business intelligence solutions.
               </p>
               <p className="text-base md:text-lg lg:text-xl text-slate-200 leading-relaxed font-normal tracking-wide">
@@ -212,7 +212,7 @@ export function HeroSection() {
                   whileHover={{ scale: 1.15, rotateX: 15 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  4
+                  4+
                 </motion.div>
                 <div className="text-lg font-semibold text-slate-100 relative z-10 group-hover:text-white transition-colors duration-300">Years Experience</div>
                 <div className="text-sm text-slate-400 mt-2 relative z-10 group-hover:text-blue-300 transition-colors duration-300 font-medium">in Business Analytics</div>
