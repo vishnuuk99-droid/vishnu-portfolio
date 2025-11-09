@@ -127,30 +127,39 @@ export function ContactSection() {
     <section 
       id="contact" 
       ref={ref}
-      className="py-32 bg-gray-800 relative overflow-hidden min-h-screen flex items-center justify-center"
+      className="py-32 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden min-h-screen flex items-center justify-center"
     >
-      {/* Background Elements */}
-      <div className="absolute inset-0 opacity-5 dark:opacity-10">
-        <div className="absolute top-20 left-10 w-40 h-40 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl animate-float" />
-        <div className="absolute bottom-10 right-10 w-32 h-32 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-float" style={{ animationDelay: '3s' }} />
-        <div className="absolute top-1/2 right-1/4 w-28 h-28 bg-green-500 rounded-full mix-blend-multiply filter blur-xl animate-float" style={{ animationDelay: '1.5s' }} />
+      {/* Premium Background Elements */}
+      <div className="absolute inset-0">
+        {/* Floating Elements */}
+        <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/3 w-48 h-48 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 rounded-full blur-2xl animate-float" style={{ animationDelay: '4s' }} />
+        
+        {/* Grid Overlay */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="w-full h-full bg-gradient-to-b from-transparent via-slate-800/5 to-transparent" />
+        </div>
       </div>
 
       <div className="relative z-10 w-full max-w-[90rem] mx-auto px-8">
-        {/* Section Header */}
+        {/* Premium Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Let&apos;s <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Connect</span>
+          <h2 className="text-5xl lg:text-7xl font-extralight text-white mb-6 tracking-tight">
+            Let&apos;s
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 font-light">
+              Connect
+            </span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mx-auto mb-6" />
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          <div className="w-24 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto mb-6" />
+          <p className="text-xl text-slate-400 font-light max-w-3xl mx-auto leading-relaxed">
             Ready to transform your business challenges into data-driven opportunities? 
-            Let&apos;s discuss how we can work together to achieve exceptional results.
+            Let&apos;s collaborate to create analytics solutions that drive exceptional results.
           </p>
         </motion.div>
 

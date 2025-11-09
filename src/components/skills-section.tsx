@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { BarChart3, Database, FileText, Palette, Code2, TrendingUp } from 'lucide-react'
+import { BarChart3, Database, FileText, Palette, Code2, TrendingUp, Zap, Target, Layers } from 'lucide-react'
 
 export function SkillsSection() {
   const ref = useRef(null)
@@ -89,194 +89,268 @@ export function SkillsSection() {
     <section 
       id="skills" 
       ref={ref}
-      className="py-32 bg-gray-900 relative overflow-hidden min-h-screen flex items-center justify-center"
+      className="py-32 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden min-h-screen flex items-center justify-center"
     >
-      {/* Background Elements */}
-      <div className="absolute inset-0 opacity-5 dark:opacity-10">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl animate-float" />
-        <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-green-500 rounded-full mix-blend-multiply filter blur-xl animate-float" style={{ animationDelay: '4s' }} />
+      {/* Premium Background Elements */}
+      <div className="absolute inset-0">
+        {/* Floating Elements */}
+        <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/3 w-48 h-48 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 rounded-full blur-2xl animate-float" style={{ animationDelay: '4s' }} />
+        
+        {/* Grid Overlay */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="w-full h-full bg-gradient-to-b from-transparent via-slate-800/5 to-transparent" />
+        </div>
       </div>
 
       <div className="relative z-10 w-full max-w-[90rem] mx-auto px-8">
-        {/* Section Header */}
+        {/* Premium Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Skills</span>
+          <h2 className="text-5xl lg:text-7xl font-extralight text-white mb-6 tracking-tight">
+            Core
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 font-light">
+              Expertise
+            </span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mx-auto mb-6" />
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            A comprehensive toolkit of technical expertise, analytical capabilities, and interpersonal skills 
-            developed through years of hands-on experience in business analysis and data analytics.
+          <div className="w-24 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto mb-6" />
+          <p className="text-xl text-slate-400 font-light max-w-3xl mx-auto leading-relaxed">
+            A comprehensive arsenal of technical mastery, analytical prowess, and leadership capabilities 
+            refined through years of data-driven excellence and strategic business transformation.
           </p>
         </motion.div>
 
-        {/* Skill Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        {/* Premium Skill Category Tabs */}
+        <div className="flex flex-wrap justify-center gap-6 mb-16">
           {Object.entries(skillCategories).map(([key, category]) => {
             const isActive = activeCategory === key;
-            let activeClasses = '';
             
-            if (isActive) {
-              if (category.color === 'blue') {
-                activeClasses = 'bg-blue-500 text-white shadow-lg';
-              } else if (category.color === 'purple') {
-                activeClasses = 'bg-purple-500 text-white shadow-lg';
-              } else if (category.color === 'green') {
-                activeClasses = 'bg-green-500 text-white shadow-lg';
-              }
-            }
-
             return (
-              <button
+              <motion.button
                 key={key}
                 onClick={() => handleTabClick(key)}
                 type="button"
-                style={{ 
-                  pointerEvents: 'auto',
-                  zIndex: 10
-                }}
-                className={`flex items-center gap-3 px-6 py-3 rounded-full font-semibold transition-all duration-300 cursor-pointer ${
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className={`flex items-center gap-4 px-8 py-4 rounded-2xl font-medium transition-all duration-500 cursor-pointer glass-panel border ${
                   isActive
-                    ? activeClasses
-                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600'
+                    ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 border-blue-400/50 text-white shadow-2xl shadow-blue-500/25'
+                    : 'border-white/10 text-slate-300 hover:border-white/20 hover:text-white hover:bg-white/5'
                 }`}
               >
-                {category.icon}
-                {category.title}
-              </button>
+                <div className={`p-2 rounded-xl ${
+                  isActive 
+                    ? 'bg-gradient-to-br from-blue-400/20 to-purple-400/20' 
+                    : 'bg-slate-800/50'
+                }`}>
+                  {category.icon}
+                </div>
+                <span className="text-lg">{category.title}</span>
+              </motion.button>
             );
           })}
         </div>
 
-        {/* Skills Grid */}
-        <div
+        {/* Premium Skills Grid */}
+        <motion.div
           key={`skills-${activeCategory}`}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto"
         >
           {skillCategories[activeCategory as keyof typeof skillCategories].skills.map((skill, index) => (
-            <div
+            <motion.div
               key={`${activeCategory}-${skill.name}-${index}`}
-              className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ 
+                scale: 1.02, 
+                y: -8,
+                transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
+              }}
+              className="glass-panel p-8 rounded-3xl border border-white/10 hover:border-white/20 transition-all duration-500 group relative overflow-hidden"
             >
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                  {skill.name}
-                </h3>
-                <span className={`text-lg font-bold ${
-                  activeCategory === 'technical' ? 'text-blue-500' :
-                  activeCategory === 'analytical' ? 'text-purple-500' : 'text-green-500'
-                }`}>
-                  {skill.level}%
-                </span>
-              </div>
+              {/* Background Glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              {/* Progress Bar */}
-              <div className="mb-4">
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
-                  <div
-                    style={{ width: `${skill.level}%` }}
-                    className={`h-full rounded-full transition-all duration-1000 ${
-                      activeCategory === 'technical' ? 'bg-gradient-to-r from-blue-400 to-blue-600' :
-                      activeCategory === 'analytical' ? 'bg-gradient-to-r from-purple-400 to-purple-600' :
-                      'bg-gradient-to-r from-green-400 to-green-600'
-                    }`}
-                  />
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-xl font-light text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">
+                    {skill.name}
+                  </h3>
+                  <span className={`text-2xl font-extralight ${
+                    activeCategory === 'technical' ? 'text-cyan-400' :
+                    activeCategory === 'analytical' ? 'text-purple-400' : 'text-emerald-400'
+                  }`}>
+                    {skill.level}%
+                  </span>
                 </div>
+                
+                {/* Premium Progress Bar */}
+                <div className="mb-6">
+                  <div className="w-full h-2 bg-slate-800/50 rounded-full overflow-hidden backdrop-blur-sm">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: `${skill.level}%` }}
+                      transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 + index * 0.1 }}
+                      className={`h-full rounded-full ${
+                        activeCategory === 'technical' ? 'bg-gradient-to-r from-cyan-400 to-blue-500' :
+                        activeCategory === 'analytical' ? 'bg-gradient-to-r from-purple-400 to-indigo-500' :
+                        'bg-gradient-to-r from-emerald-400 to-teal-500'
+                      } shadow-lg relative`}
+                    >
+                      <div className="absolute inset-0 bg-white/20 rounded-full blur-sm" />
+                    </motion.div>
+                  </div>
+                </div>
+
+                <p className="text-slate-400 font-light leading-relaxed group-hover:text-slate-300 transition-colors duration-300">
+                  {skill.description}
+                </p>
               </div>
-
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                {skill.description}
-              </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Skill Highlights */}
+        {/* Premium Skill Highlights */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+          className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
         >
           <motion.div
             variants={itemVariants}
-            className="text-center p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300"
+            whileHover={{ 
+              scale: 1.05, 
+              y: -10,
+              transition: { duration: 0.3 }
+            }}
+            className="text-center p-10 glass-panel rounded-3xl border border-white/10 hover:border-cyan-400/30 transition-all duration-500 group relative overflow-hidden"
           >
-            <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Database className="text-blue-600 dark:text-blue-400" size={32} />
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative z-10">
+              <div className="w-20 h-20 bg-gradient-to-br from-cyan-400/20 to-blue-400/20 rounded-2xl flex items-center justify-center mx-auto mb-6 backdrop-blur-sm border border-cyan-400/20 group-hover:border-cyan-400/40 transition-all duration-300">
+                <Database className="text-cyan-400" size={36} />
+              </div>
+              <h3 className="text-2xl font-light text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-blue-400 transition-all duration-300">Data Mastery</h3>
+              <p className="text-slate-400 font-light leading-relaxed group-hover:text-slate-300 transition-colors duration-300">
+                Expert-level proficiency in data analysis, visualization, and business intelligence tools
+              </p>
             </div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Data Mastery</h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              Expert-level proficiency in data analysis, visualization, and business intelligence tools
-            </p>
           </motion.div>
 
           <motion.div
             variants={itemVariants}
-            className="text-center p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300"
+            whileHover={{ 
+              scale: 1.05, 
+              y: -10,
+              transition: { duration: 0.3 }
+            }}
+            className="text-center p-10 glass-panel rounded-3xl border border-white/10 hover:border-purple-400/30 transition-all duration-500 group relative overflow-hidden"
           >
-            <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-4">
-              <FileText className="text-purple-600 dark:text-purple-400" size={32} />
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative z-10">
+              <div className="w-20 h-20 bg-gradient-to-br from-purple-400/20 to-indigo-400/20 rounded-2xl flex items-center justify-center mx-auto mb-6 backdrop-blur-sm border border-purple-400/20 group-hover:border-purple-400/40 transition-all duration-300">
+                <Target className="text-purple-400" size={36} />
+              </div>
+              <h3 className="text-2xl font-light text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-indigo-400 transition-all duration-300">Process Excellence</h3>
+              <p className="text-slate-400 font-light leading-relaxed group-hover:text-slate-300 transition-colors duration-300">
+                Strong analytical thinking and process optimization capabilities for business improvement
+              </p>
             </div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Process Excellence</h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              Strong analytical thinking and process optimization capabilities for business improvement
-            </p>
           </motion.div>
 
           <motion.div
             variants={itemVariants}
-            className="text-center p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300"
+            whileHover={{ 
+              scale: 1.05, 
+              y: -10,
+              transition: { duration: 0.3 }
+            }}
+            className="text-center p-10 glass-panel rounded-3xl border border-white/10 hover:border-emerald-400/30 transition-all duration-500 group relative overflow-hidden"
           >
-            <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Palette className="text-green-600 dark:text-green-400" size={32} />
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative z-10">
+              <div className="w-20 h-20 bg-gradient-to-br from-emerald-400/20 to-teal-400/20 rounded-2xl flex items-center justify-center mx-auto mb-6 backdrop-blur-sm border border-emerald-400/20 group-hover:border-emerald-400/40 transition-all duration-300">
+                <Zap className="text-emerald-400" size={36} />
+              </div>
+              <h3 className="text-2xl font-light text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-emerald-400 group-hover:to-teal-400 transition-all duration-300">Creative Solutions</h3>
+              <p className="text-slate-400 font-light leading-relaxed group-hover:text-slate-300 transition-colors duration-300">
+                Innovative problem-solving approach with excellent communication and collaboration skills
+              </p>
             </div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Creative Solutions</h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              Innovative problem-solving approach with excellent communication and collaboration skills
-            </p>
           </motion.div>
         </motion.div>
 
-        {/* Technologies & Tools */}
+        {/* Premium Technologies & Tools */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="mt-20 pt-12 border-t border-gray-200 dark:border-gray-700"
+          className="mt-24 pt-16 relative"
         >
-          <motion.div variants={itemVariants} className="text-center mb-12">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              Technologies & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Tools</span>
+          {/* Premium Divider */}
+          <div className="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-16" />
+          
+          <motion.div variants={itemVariants} className="text-center mb-16">
+            <h3 className="text-4xl md:text-5xl font-extralight text-white mb-6 tracking-tight">
+              Technologies & 
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 font-light">
+                Arsenal
+              </span>
             </h3>
-            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              A comprehensive arsenal of modern tools and technologies for data analysis, visualization, and business intelligence.
+            <p className="text-xl text-slate-400 font-light max-w-3xl mx-auto leading-relaxed">
+              A comprehensive collection of cutting-edge tools and technologies for data analysis, 
+              visualization, and business intelligence excellence.
             </p>
           </motion.div>
 
           <motion.div 
             variants={containerVariants}
-            className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto"
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-6xl mx-auto"
           >
             {[
-              'Excel', 'Power BI', 'SQL', 'Python', 'Power Query', 'Pentaho',
-              'Visio', 'Balsamiq', 'JIRA', 'Draw.io', 'Lucid Chart', 'Confluence',
-              'UAT', 'Agile Methodology', 'FRDs', 'BRDs', 'ETL', 'Wireframing'
+              { name: 'Excel', category: 'data' },
+              { name: 'Power BI', category: 'analytics' },
+              { name: 'SQL', category: 'data' },
+              { name: 'Python', category: 'dev' },
+              { name: 'Power Query', category: 'analytics' },
+              { name: 'Pentaho', category: 'etl' },
+              { name: 'Visio', category: 'design' },
+              { name: 'Balsamiq', category: 'design' },
+              { name: 'JIRA', category: 'management' },
+              { name: 'Draw.io', category: 'design' },
+              { name: 'Lucid Chart', category: 'design' },
+              { name: 'Confluence', category: 'management' },
+              { name: 'UAT', category: 'testing' },
+              { name: 'Agile', category: 'methodology' },
+              { name: 'FRDs', category: 'documentation' },
+              { name: 'BRDs', category: 'documentation' },
+              { name: 'ETL', category: 'etl' },
+              { name: 'Wireframing', category: 'design' }
             ].map((tool, index) => (
-              <motion.span
-                key={tool}
+              <motion.div
+                key={tool.name}
                 variants={itemVariants}
-                whileHover={{ scale: 1.1, y: -2 }}
-                className="px-4 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium shadow-sm border border-gray-200 dark:border-gray-600 hover:shadow-md hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-200"
+                whileHover={{ 
+                  scale: 1.05, 
+                  y: -4,
+                  transition: { duration: 0.2 }
+                }}
+                className="glass-panel px-4 py-3 rounded-2xl border border-white/10 hover:border-blue-400/30 transition-all duration-300 group cursor-pointer text-center"
               >
-                {tool}
-              </motion.span>
+                <span className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors duration-300">
+                  {tool.name}
+                </span>
+              </motion.div>
             ))}
           </motion.div>
         </motion.div>
